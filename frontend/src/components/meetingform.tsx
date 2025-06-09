@@ -1,7 +1,6 @@
 // components/MeetingForm.tsx
 import { useState } from "react";
 import axios from "axios";
-
 const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api`;
 const MeetingForm = ({ email, onSuccess }: { email: string; onSuccess: () => void }) => {
   const [form, setForm] = useState({
@@ -41,9 +40,11 @@ const MeetingForm = ({ email, onSuccess }: { email: string; onSuccess: () => voi
       await axios.post(`${API_URL}/meetings/create`, meetingData);
       alert("Meeting Created");
       onSuccess();
-    } catch {
-      alert("Error creating meeting");
-    }
+    } catch (error: unknown) {
+  const err = error as Error;
+  alert(err.message);
+}
+
   };
 
   return (

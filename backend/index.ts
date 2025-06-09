@@ -35,6 +35,7 @@ app.use(
   })
 );
 app.options("*", cors());
+app.options("/api/meetings/create", cors());
 app.use(express.json());
 
 // Routes
