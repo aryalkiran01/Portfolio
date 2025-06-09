@@ -1,5 +1,10 @@
-// utils/getAccessToken.ts
 import axios from "axios";
+
+interface ZohoTokenResponse {
+  access_token: string;
+  expires_in: number;
+  [key: string]: any;
+}
 
 let cachedAccessToken: string | null = null;
 let tokenExpiryTime: number | null = null;
@@ -11,7 +16,7 @@ export const getAccessToken = async (): Promise<string> => {
     return cachedAccessToken;
   }
 
-  const response = await axios.post(
+  const response = await axios.post<ZohoTokenResponse>(
     "https://accounts.zoho.com/oauth/v2/token",
     null,
     {

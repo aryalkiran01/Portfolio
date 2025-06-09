@@ -8,6 +8,13 @@ import { getAccessToken } from "../config/getAccessToken.ts";
 
 const ZOHO_API_URL = "https://meeting.zoho.com/api/v2/877717138/sessions.json";
 
+interface ZohoMeetingResponse {
+  session_id: string;
+  join_url: string;
+  start_url: string;
+  [key: string]: any;
+}
+
 export const createMeeting = async (
   req: Request,
   res: Response
@@ -33,7 +40,11 @@ export const createMeeting = async (
 
     const accessToken = await getAccessToken();
 
-    const { data } = await axios.post(
+    const { data } = await axios.post<{
+      session_id: string;
+      join_url: string;
+      start_url: string;
+    }>(
       ZOHO_API_URL,
       {
         session: {

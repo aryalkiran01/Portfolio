@@ -1,6 +1,10 @@
 // routes/meeting.js
 import express from "express";
-import { createMeeting, listMeetings,sendContactEmail } from "../controllers/zohocontroller.js";
+import {
+  createMeeting,
+  listMeetings,
+  sendContactEmail,
+} from "../controllers/zohocontroller.ts";
 
 const router = express.Router();
 
