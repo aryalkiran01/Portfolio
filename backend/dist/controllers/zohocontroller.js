@@ -1,9 +1,9 @@
 // controllers/zohocontroller
 import axios from "axios";
 import { format } from "date-fns";
-import Meeting from "../models/meeting.js";
-import transporter from "../config/mailer.js";
-import { getAccessToken } from "../config/getAccessToken.js";
+import Meeting from "../models/meeting";
+import transporter from "../config/mailer";
+import { getAccessToken } from "../config/getAccessToken";
 const ZOHO_API_URL = "https://meeting.zoho.com/api/v2/877717138/sessions.json";
 export const createMeeting = async (req, res) => {
     try {
