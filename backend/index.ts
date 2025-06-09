@@ -1,13 +1,30 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { connectDB } from "./config/db";
-import projectRoutes from "./routes/projectroutes";
-import meetingRoutes from "./routes/router";
-import sendContactEmail from "./routes/router";
+import mongoose from "mongoose";
+import projectRoutes from "./routes/projectroutes.js";
+import meetingRoutes from "./routes/router.js";
+import sendContactEmail from "./routes/router.js";
 
 dotenv.config();
 const app = express();
+
+// Connect to MongoDB (directly here)
+const connectDB = async (): Promise<void> => {
+  try {
+    const conn = await mongoose.connect(
+      process.env.MONGO_URI || "mongodb://localhost:27017/",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      } as mongoose.ConnectOptions
+    );
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error: any) {
+    console.error("MongoDB connection failed:", error.message);
+    process.exit(1);
+  }
+};
 
 // CORS setup
 app.use(
@@ -19,7 +36,6 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(express.json());
 
 // Routes
