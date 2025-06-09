@@ -29,7 +29,7 @@ export const AboutPage = () => {
             className="flex justify-center"
           >
             <img
-              src="../../public/website.jpg"
+              src="/website.jpg"
               alt="Kiran Aryal"
               className="w-full max-w-sm aspect-[3/4] object-cover rounded-xl shadow-lg border border-gray-700"
             />
@@ -92,7 +92,7 @@ export const AboutPage = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="../../public/job done.pdf"
+                href="/job done.pdf"
                 download="Kiran-Aryal-CV.pdf"
                 className="inline-flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-full text-sm font-medium transition"
               >
@@ -121,7 +121,7 @@ export const AboutPage = () => {
               className="mt-12 flex justify-center"
             >
               <iframe
-                src="../../public/job done.pdf"
+                src="/job-done.pdf"
                 className="w-full max-w-5xl h-[600px] rounded-xl border border-gray-600 shadow-lg"
                 title="Kiran Aryal CV"
               ></iframe>

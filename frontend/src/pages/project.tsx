@@ -12,7 +12,7 @@ const allProjects = [
     tech: ["React", "Express", "MongoDB", "Elasticsearch", "JWT"],
     github: "https://github.com/aryalkiran01/Book-store-App.git",
     live: "https://books-backend-ruby.vercel.app/",
-    image: "../../public/book store.png",
+    image: "/book-store.png",
     category: "Bookstore",
   },
   {
@@ -22,7 +22,7 @@ const allProjects = [
     tech: ["React", "Node.js", "MongoDB", "JWT", "NX", "TS-Rest",],
     github: "https://github.com/aryalkiran01/skillprompt-lms.git",
     live: "https://notdeployed",
-    image: "../../public/lms.png",
+    image: "/lms.png",
     category: "LMS",
   },
   {
@@ -32,7 +32,7 @@ const allProjects = [
     tech: ["Express", "Zoho Mail API", "Node.js"],
     github: "https://github.com/aryalkiran01/Zoho-mail.git",
     live: "https://notintegrated",
-    image: "../../public/zoho.png",
+    image: "/zoho.png",
     category: "Zoho",
   },
   {
@@ -42,7 +42,7 @@ const allProjects = [
     tech: ["React", "Tailwind"],
     github: "https://github.com/aryalkiran01/E-coomerce.git",
     live: "https://ecom.kiranaryal.com",
-    image: "../../public/ecom.png",
+    image: "/ecom.png",
     category: "Ecommerce",
   },
   {
@@ -52,7 +52,7 @@ const allProjects = [
     tech: ["React", "MongoDB", "Prisma"],
     github: "https://github.com/aryalkiran01/ipo-tracker",
     live: "#",
-    image: "../../public/ipo mangement systen.png",
+    image: "/ipo-mangement-system.png",
     category: "IPO",
   },
 ];
