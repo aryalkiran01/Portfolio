@@ -1,4 +1,3 @@
-// index.ts or server.ts
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -11,8 +10,14 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// CORS setup
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://your-frontend.vercel.app"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Routes

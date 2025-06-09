@@ -2,8 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api";
-
+const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api`;
 const MeetingForm = ({ email, onSuccess }: { email: string; onSuccess: () => void }) => {
   const [form, setForm] = useState({
     topic: "",
@@ -12,7 +11,7 @@ const MeetingForm = ({ email, onSuccess }: { email: string; onSuccess: () => voi
     date: "",
     duration: "",
     timezone: "Asia/Kathmandu",
-    participants: email, // default to passed email
+    participants: email, 
   });
   type FormFields =
   | "topic"
