@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { BellIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
+import {
+  BellIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { IoBookSharp } from "react-icons/io5";
+import { motion, AnimatePresence } from "framer-motion";
+import { IoCodeSlash } from "react-icons/io5";
 
 export function AppShell() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Projects", href: "/projects" },
@@ -15,25 +17,59 @@ export function AppShell() {
     { name: "Contact", href: "/contact" },
   ];
 
-  return (
-    <div className="min-h-full bg-gray-50">
-      <nav className="bg-gradient-to-r from-slate-900 to-slate-900 shadow-lg">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center space-x-1 flex-shrink-0">
-              <IoBookSharp className="fill-white text-2xl" />
-              <span className="text-white text-xl font-semibold whitespace-nowrap">
-                KIRAN ARYAL
-              </span>
-            </div>
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-            <div className="hidden md:flex flex-1 justify-center items-center">
-              <div className="text-sm italic text-white opacity-80 px-2">
-                "Code today. Create tomorrow."
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-full bg-gray-50 dark:bg-gray-900">
+      <nav
+        className={`sticky top-0 z-50 transition-colors duration-300 ${
+          scrolled ? "bg-slate-800 shadow-md" : "bg-slate-900"
+        }`}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between relative">
+            {/* Left: Logo */}
+            <div className="flex flex-col items-start gap-1 z-20">
+              <div className="flex items-center gap-2">
+                <IoCodeSlash className="text-sky-500 text-2xl" />
+                <span className="text-white text-xl font-bold whitespace-nowrap">
+                  KIRAN ARYAL
+                </span>
+              </div>
+              {/* Quote below logo for mobile */}
+              <div className="lg:hidden">
+                <motion.span
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-white text-sm"
+                >
+                  "Building beautiful web experiences"
+                </motion.span>
               </div>
             </div>
 
-            <div className="hidden lg:flex items-center space-x-6">
+            {/* Desktop Quote */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 hidden lg:block">
+              <motion.span
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-white font-medium text-base text-center"
+              >
+                "Building beautiful web experiences"
+              </motion.span>
+            </div>
+
+            {/* Right: Desktop nav */}
+            <div className="hidden lg:flex items-center space-x-6 z-20">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -43,48 +79,19 @@ export function AppShell() {
                   {link.name}
                 </Link>
               ))}
-
-              <button className="relative p-1 rounded-full text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+              <button
+                className="p-1 rounded-full text-indigo-200 hover:text-white"
+                title="Notifications"
+              >
                 <BellIcon className="h-6 w-6" />
               </button>
-
-              <Menu as="div" className="relative">
-                <MenuButton className="flex items-center rounded-full bg-indigo-600 text-sm text-white focus:ring-2 focus:ring-white px-3 py-1">
-                  Account
-                </MenuButton>
-                <MenuItems className="absolute right-0 mt-2 w-48 bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-10 rounded-md py-1">
-                  <MenuItem>
-                    {({ active }) => (
-                      <Link
-                        to="/login"
-                        className={`block px-4 py-2 text-sm ${
-                          active ? "bg-gray-100" : ""
-                        }`}
-                      >
-                        Login
-                      </Link>
-                    )}
-                  </MenuItem>
-                  <MenuItem>
-                    {({ active }) => (
-                      <Link
-                        to="/register"
-                        className={`block px-4 py-2 text-sm ${
-                          active ? "bg-gray-100" : ""
-                        }`}
-                      >
-                        Register
-                      </Link>
-                    )}
-                  </MenuItem>
-                </MenuItems>
-              </Menu>
             </div>
 
-            <div className="lg:hidden">
+            {/* Mobile Menu Toggle */}
+            <div className="lg:hidden flex items-center z-20">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-white p-2 rounded-lg focus:ring-2 focus:ring-white"
+                className="text-white hover:text-indigo-300 transition"
               >
                 {mobileMenuOpen ? (
                   <XMarkIcon className="h-6 w-6" />
@@ -96,40 +103,37 @@ export function AppShell() {
           </div>
         </div>
 
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-slate-900 text-white px-6 py-8 space-y-6 flex flex-col items-center rounded-b-lg shadow-md transition-all duration-300 ease-in-out">
-            <div className="w-full space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="block text-center w-full text-white bg-indigo-600 hover:bg-blue-600 px-4 py-2 rounded-lg transition"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-
-            <div className="w-full space-y-2">
-              <Link
-                to="/login"
-                className="block w-full text-center text-white bg-indigo-600 hover:bg-blue-600 px-4 py-2 rounded-lg transition"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="block w-full text-center text-white bg-indigo-600 hover:bg-blue-600 px-4 py-2 rounded-lg transition"
-              >
-                Register
-              </Link>
-            </div>
-          </div>
-        )}
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden bg-slate-900 text-white px-6 py-8 space-y-6 flex flex-col items-center rounded-b-lg shadow-md"
+            >
+              <div className="w-full space-y-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-center w-full text-white bg-indigo-600 hover:bg-blue-600 px-4 py-2 rounded-lg transition"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <main>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"></div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Main content goes here */}
+        </div>
         <Toaster />
       </main>
     </div>

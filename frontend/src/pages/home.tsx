@@ -27,7 +27,7 @@ export default function Home() {
               {projects.map((p) => (
                 <div
                   key={p._id}
-                  className="p-4 bg-gradient-to-r from-slate-900 to-slate-900 shadow-lg"
+                  className="p-4  bg-gradient-to-b from-slate-900 to-slate-950 shadow-lg"
                 >
                   <h2 className="text-xl font-semibold text-gray-800">
                     {p.title}

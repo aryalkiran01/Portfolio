@@ -18,7 +18,7 @@ export default function GreetingSlider({ onFinish }: { onFinish: () => void }) {
         } else {
           clearInterval(interval);
           setFadeOut(true);
-          setTimeout(onFinish, 600); // match fade duration
+          setTimeout(onFinish, 600); 
           return prev;
         }
       });
