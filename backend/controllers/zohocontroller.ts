@@ -2,9 +2,9 @@
 import axios from "axios";
 import { format } from "date-fns";
 import { Request, Response } from "express";
-import Meeting from "../models/meeting";
-import transporter from "../config/mailer";
-import { getAccessToken } from "../config/getAccessToken";
+import Meeting from "../models/meeting.js";
+import transporter from "../config/mailer.js";
+import { getAccessToken } from "../config/getAccessToken.js";
 
 const ZOHO_API_URL = "https://meeting.zoho.com/api/v2/877717138/sessions.json";
 

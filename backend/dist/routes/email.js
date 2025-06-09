@@ -1,6 +1,0 @@
-"use strict";
-// import express from "express";
-// import  {sendContactEmail} from "../controllers/zohocontroller";
-// const router = express.Router();
-// router.post("/contact", sendContactEmail);
-// export default router;

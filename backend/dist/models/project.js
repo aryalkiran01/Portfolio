@@ -8,3 +8,4 @@ const projectSchema = new mongoose.Schema({
     image: String,
 });
 export const Project = mongoose.model("Project", projectSchema);
+export default Project;

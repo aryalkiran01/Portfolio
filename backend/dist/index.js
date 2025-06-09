@@ -2,12 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import projectRoutes from "./routes/projectroutes.js";
 import meetingRoutes from "./routes/router.js";
 import sendContactEmail from "./routes/router.js";
 dotenv.config();
 const app = express();
-// Connect to MongoDB (directly here)
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/", {
@@ -31,7 +29,6 @@ app.use(cors({
 }));
 app.use(express.json());
 // Routes
-app.use("/api/projects", projectRoutes);
 app.use("/api/meetings", meetingRoutes);
 app.post("/api/contact", sendContactEmail);
 app.get("/", (req, res) => {
