@@ -1,10 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { connectDB } from "./config/db";
-import projectRoutes from "./routes/projectroutes";
-import meetingRoutes from "./routes/router";
-import sendContactEmail from "./routes/router";
+import { connectDB } from "./config/db.js";
+import projectRoutes from "./routes/projectroutes.js";
+import meetingRoutes from "./routes/router.js";
+import sendContactEmail from "./routes/router.js";
 dotenv.config();
 const app = express();
 // CORS setup

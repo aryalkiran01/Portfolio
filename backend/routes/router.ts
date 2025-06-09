@@ -4,7 +4,7 @@ import {
   createMeeting,
   listMeetings,
   sendContactEmail,
-} from "../controllers/zohocontroller";
+} from "../controllers/zohocontroller.js";
 
 const router = express.Router();
 
