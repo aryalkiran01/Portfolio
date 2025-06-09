@@ -1,10 +1,10 @@
-// controllers/zohocontroller.ts
+// controllers/zohocontroller
 import axios from "axios";
 import { format } from "date-fns";
 import { Request, Response } from "express";
-import Meeting from "../models/meeting.ts";
-import transporter from "../config/mailer.ts";
-import { getAccessToken } from "../config/getAccessToken.ts";
+import Meeting from "../models/meeting";
+import transporter from "../config/mailer";
+import { getAccessToken } from "../config/getAccessToken";
 
 const ZOHO_API_URL = "https://meeting.zoho.com/api/v2/877717138/sessions.json";
 

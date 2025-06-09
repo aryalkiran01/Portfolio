@@ -1,6 +1,6 @@
 // controllers/getProjects.ts
 import { Request, Response } from "express";
-import { Project } from "../models/project.ts";
+import { Project } from "../models/project";
 
 export const getProjects = async (
   req: Request,
