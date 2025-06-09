@@ -13,7 +13,10 @@ const app = express();
 // CORS setup
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://your-frontend.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://portfolio-eosin-two-15.vercel.app",
+    ],
     credentials: true,
   })
 );
