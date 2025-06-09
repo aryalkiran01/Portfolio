@@ -24,16 +24,17 @@ const connectDB = async (): Promise<void> => {
   }
 };
 
-// CORS setup
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://portfolio-eosin-two-15.vercel.app",
+      "https://portfolio-b88z1ado1-aryalkiran01s-projects.vercel.app",
     ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
+app.options("*", cors());
 app.use(express.json());
 
 // Routes
