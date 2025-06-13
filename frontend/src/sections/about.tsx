@@ -63,6 +63,7 @@ export const DesignerSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col items-center"
           >
+           
             <img
               src="/website.jpg"
               alt="Designer"

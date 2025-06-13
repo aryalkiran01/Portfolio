@@ -44,7 +44,7 @@ export const AboutPage = () => {
           >
             <h2 className="text-4xl font-bold mb-4">About Me</h2>
             <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-              I'm <span className="font-semibold text-white">Kiran Aryal</span>, a Full Stack Developer and Editor currently in my 6th semester of studying BCA at Crimoon College of Technology. I have a passion for creating dynamic web applications and an eye for detail in editing content. My journey in technology has equipped me with a diverse skill set, allowing me to work on both front-end and back-end development. I’m always eager to explore new technologies and grow.
+              I'm <span className="font-semibold text-white">Kiran Aryal</span>, a Full Stack Developer and Editor currently in my 6th semester of studying BCA at Crimson College of Technology. I have a passion for creating dynamic web applications and an eye for detail in editing content. My journey in technology has equipped me with a diverse skill set, allowing me to work on both front-end and back-end development. I’m always eager to explore new technologies and grow.
             </p>
 
             <div className="space-y-6">

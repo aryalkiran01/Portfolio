@@ -29,6 +29,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://portfolio-b88z1ado1-aryalkiran01s-projects.vercel.app",
+      "https://www.aryalkiran21.com.np",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
