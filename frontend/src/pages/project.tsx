@@ -25,6 +25,39 @@ const allProjects = [
     image: "/lms.png",
     category: "LMS",
   },
+{
+    title: "Amazon",
+    description:
+      "Amazon's technology stack includes React and JavaScript on the front end, Java, Python, and Scala on the backend, with AWS serving as both the backbone of its own operations and a leading cloud provider to others.",
+    tech: [	"React", "JS	Java", "Python", "Scala	AWS",  "DynamoDB"],
+    live: "https://www.amazon.com",
+    image: "/amazon.png",
+    category: "Ecommerce",
+  },
+
+{
+    title: "Spotify",
+    description:
+      "Music player system to listen and watch the music",
+    tech: ["React.js", "GraphQl","Python","Apache" ],
+    github: "https://github.com/aryalkiran01/Zoho-mail.git",
+    live: "https://spotify.com",
+    image: "/spotify.png",
+    category: "Music player",
+  },
+ 
+  
+ {
+    title: "Netflix",
+    description:
+      "Netflix’s tech stack includes React and Node.js on the front end, Java, Python, and Spring Boot on the back end, and a massive microservices architecture deployed on Amazon Web Services (AWS).",
+    tech: ["React", "Node.js", "Python"],
+    github: "https://github.com/aryalkiran01/Zoho-mail.git",
+    live: "https://www.netflix.com/np",
+    image: "/netflix.png",
+    category: "Netflix",
+  },
+
   {
     title: "Zoho Mail Integration",
     description:
