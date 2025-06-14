@@ -1,8 +1,8 @@
-// const express = require('express');
-// import  {sendContactEmail} from "../controllers/zohocontroller";
+const express = require("express");
+import { sendContactEmail } from "../controllers/zohocontroller";
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.post("/contact", sendContactEmail);
+router.post("/contact", sendContactEmail);
 
-// export default router;
+export default router;
